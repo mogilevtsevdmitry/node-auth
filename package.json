@@ -1,0 +1,79 @@
+{
+  "name": "gif-manager",
+  "version": "1.0.0",
+  "description": "Web application that allows a user to search for (by name, tag, upload date) and save animated GIFs from user's computer to a user profile",
+  "main": "dist/app.js",
+  "repository": "https://github.com/dmogilevtsev/gif-manager.git",
+  "author": "Dmitry Mogilevtsev <93346530+dmogilevtsev@users.noreply.github.com>",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "start": "yarn build && cross-env NODE_ENV=production node dist/app.js",
+    "build": "rimraf ./dist && babel -d ./dist ./src -s",
+    "dev": "nodemon index.js",
+    "lint": "eslint ./src",
+    "docs:build": "documentation build src/** -f html -o docs"
+  },
+  "dependencies": {
+    "babel-cli": "^6.23.0",
+    "babel-core": "^6.23.1",
+    "babel-preset-env": "^1.1.11",
+    "bcrypt": "^5.0.1",
+    "cookie-parser": "^1.4.5",
+    "cors": "^2.8.5",
+    "cross-env": "^7.0.3",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "express-validator": "^6.13.0",
+    "jsonwebtoken": "^8.5.1",
+    "nodemailer": "^6.7.0",
+    "pg": "^8.7.1",
+    "rimraf": "^2.6.1",
+    "sequelize": "^6.8.0",
+    "uuid": "^8.3.2"
+  },
+  "devDependencies": {
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-register": "^6.23.0",
+    "concurrently": "^6.3.0",
+    "documentation": "^13.2.5",
+    "eslint": "^8.1.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-import": "^2.25.2",
+    "nodemon": "^2.0.14"
+  },
+  "eslintConfig": {
+    "root": true,
+    "extends": [
+      "airbnb-base",
+      "prettier"
+    ],
+    "env": {
+      "node": true,
+      "es6": true
+    },
+    "rules": {
+      "no-empty-function": "off",
+      "class-methods-use-this": "off",
+      "consistent-return": "off",
+      "no-return-await": "off",
+      "no-underscore-dangle": "off"
+    }
+  },
+  "babel": {
+    "presets": [
+      [
+        "env",
+        {
+          "targets": {
+            "node": "current"
+          }
+        }
+      ]
+    ],
+    "plugins": [
+      "transform-object-rest-spread"
+    ]
+  }
+}
